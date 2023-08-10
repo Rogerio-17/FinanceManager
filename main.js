@@ -1,6 +1,7 @@
 let email = document.querySelector("#email");
 let senha = document.querySelector("#senha");
 let botao = document.querySelector("#btn");
+let dataDeNascimento = document.querySelector("#date");
 let txtDoPopUp = document.querySelector("#txtDoPopUp");
 let btnFecharPopup = document.querySelector("#btnFecharPopup");
 let problemaEmail = "";
@@ -20,6 +21,7 @@ function verificaCamposInput() {
     } else {
       email.style.color = "red";
       email.style.border = "2px solid red";
+
       // //Caso o email esteja incorreto, adionar o valor verdadeiro para verificar quando o cliente clicar em logar/cadastrar
       problemaEmail = true;
     }
@@ -30,6 +32,7 @@ function verificaCamposInput() {
     if (senha.value.length < 8) {
       senha.style.color = "red";
       senha.style.border = "2px solid red";
+
       //Caso senha esteja incorreta, adionar o valor verdadeiro para verificar quando o cliente clicar em logar/cadastrar
       problemasSenha = true;
     } else {
@@ -41,7 +44,9 @@ function verificaCamposInput() {
 
   // Quando é clicado no botão de login/cadastro verifica os campos
   botao.addEventListener("click", () => {
+    //Para não da o refresh na aba
     event.preventDefault();
+
     //Verifica se possui inputs vazios
     if (email.value != "" && senha.value != "") {
       //Verifica se o email informado foi validado
@@ -49,16 +54,23 @@ function verificaCamposInput() {
         const popup = document.getElementById("popup");
         popup.style.display = "flex";
         txtDoPopUp.textContent = "O email informado não é válido";
+
         //Verifica se a senha informada foi validada
       } else if (problemasSenha == true) {
         const popup = document.getElementById("popup");
         popup.style.display = "flex";
         txtDoPopUp.textContent =
           "A senha informada possui menos de 8 caracteres";
+
+        // Verifica se a data de nascimento foi informada
+      } else if (dataDeNascimento.value == "") {
+        const popup = document.getElementById("popup");
+        popup.style.display = "flex";
+        txtDoPopUp.textContent = "Por favor! Informe a sua data de nascimento";
+
         //se estiver tudo OK vai seguir com a logica do banco que vai ser adicionada abaixo
       } else {
         alert("Todos os campos preenchidos");
-        console.log("deu certo");
       }
     } else {
       //Se possuir campos vazios passa a mensagem para preencher todos os campos
