@@ -34,11 +34,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 8vw;
+  height: 6vw;
 }
 
 main {
-  padding-top: 3rem;
+  padding-top: 20px;
   max-width: 1440px;
   min-height: 600px;
 
@@ -58,7 +58,9 @@ header a {
   text-decoration: none;
 
 }
-
+header #logo{
+  cursor: pointer;
+}
 div.content {
   display: flex;
   flex-direction: column;
