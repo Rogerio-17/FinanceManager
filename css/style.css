@@ -4,11 +4,6 @@
   box-sizing: border-box;
 }
 
-html {
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
-
 :root {
   --dark-Blue: #031ca6;
   --wigth-blue: #0339a6;
@@ -26,68 +21,71 @@ html {
 }
 
 body {
-  background-color: var(--white);
-  font-family: "Antonio", sans-serif, "Poppins", sans-serif;
+  background: url(../assets/background_lading.png) no-repeat right bottom;
+  font-family: "Poppins", sans-serif, "Poppins", sans-serif;
+  height: 100vh;
 }
 
-input:focus {
-  outline: none;
-}
-
-select:focus{
+input, select, button:focus {
   outline: none;
 }
 
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 10rem;
-  margin-bottom: 2rem;
-  margin-top: 3rem;
+  height: 8vw;
 }
 
-#logo {
-  width: 11rem;
-  margin-right: 75%;
-  cursor: pointer;
+main {
+  padding-top: 3rem;
+  max-width: 1440px;
+  min-height: 600px;
+
+  width: 90vw;
+  height: 100vh;
+  margin: 0 auto;
+
 }
 
 header a {
+  display: flex;
+  gap: 1rem;
+
   font-size: 1.6rem;
   color: var(--grey-blue);
-  width: 10rem;
-  height: 3rem;
   text-align: right;
   text-decoration: none;
-  background-image: url("img/enter.svg");
-  background-repeat: no-repeat;
-}
-header a.end{
-  width: 6.5rem;
-  margin-left: 3.5rem;
+
 }
 
-.content {
-  width: 140rem;
-  padding: 2.5rem;
-  margin: auto;
+div.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  height: 70%;
+
+}
+div.content-index{
+  justify-content: center;
+  gap: 3rem;
 }
 
-.content h1 {
+h1 {
   font-size: 5rem;
   font-family: "Poppins", sans-serif;
-  margin-bottom: 1rem;
+
 }
 
-.content p {
-  font-size: 1.4rem;
+h3{
+  font-size: 2rem;
+  font-weight: 500;
   color: var(--labels-name);
-  margin-bottom: 1rem;
 }
 
-.content input {
-  width: 39rem;
+
+.content input.light-blue-input, select.light-blue-input {
   margin-bottom: 2.5rem;
   padding: 1rem;
   font-size: 1.6rem;
@@ -95,43 +93,33 @@ header a.end{
   border: 2px solid transparent;
   border-radius: 5px;
   color: var(--labels-name);
- 
+  width: 100%;
+
 }
 
-.textinline {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 2.5rem;
+form#form_login, form#form_cadastro label{
+  font-size: 1.5rem;
 }
 
-.textinline p {
-  margin: 0;
-  margin-right: 14rem;
+
+div.input-login-camp3{
+  display: grid;
+  grid-template-areas: "camp4 camp5";
+  grid-gap: 1rem;
 }
 
-.textinline input {
-  margin: 0;
-  width: 15rem;
-  margin-left: -3.8rem;
+
+div.input-login-camp4{
+
+  grid-area: camp4;
 }
 
-#sexo{
-  width: 13rem;
-  margin-right: 3rem;
-  margin-bottom: 2.5rem;
-  padding: 1rem;
-  font-size: 1.6rem;
-  background-color: var(--light-blue-input);
-  border: 2px solid transparent;
-  border-radius: 5px;
-  color: var(--labels-name);
-}
 
-#date{
-  width: 23rem;
-}
+div.input-login-camp5{
+  grid-area: camp5;
 
- button {
+}
+.btn-light-blue {
   display: block;
   cursor: pointer;
   border: none;
@@ -145,18 +133,8 @@ header a.end{
   transition: 0.3s;
 }
 
-.content button:hover {
+.btn-light-blue:hover {
   background-color: var(--grey-blue-light);
-}
-
-#bottom {
-  margin-top: -30rem;
-  margin-left: 70rem;
-}
-
-#bottom_cds{
-  margin-top: -41rem;
-  margin-left: 70rem;
 }
 
 .popup {
@@ -188,4 +166,3 @@ header a.end{
   margin: auto;
   margin-top: 2rem;
 }
-

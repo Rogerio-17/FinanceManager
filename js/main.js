@@ -1,8 +1,10 @@
 let email = document.querySelector("#email");
 let senha = document.querySelector("#senha");
 let botao = document.querySelector("#btn");
+
 let dataDeNascimento = document.querySelector("#date");
 let txtDoPopUp = document.querySelector("#txtDoPopUp");
+
 let btnFecharPopup = document.querySelector("#btnFecharPopup");
 let problemaEmail = "";
 let problemasSenha = "";
