@@ -34,6 +34,10 @@ input:focus {
   outline: none;
 }
 
+select:focus{
+  outline: none;
+}
+
 header {
   display: flex;
   justify-content: center;
@@ -91,6 +95,7 @@ header a.end{
   border: 2px solid transparent;
   border-radius: 5px;
   color: var(--labels-name);
+ 
 }
 
 .textinline {
@@ -113,6 +118,13 @@ header a.end{
 #sexo{
   width: 13rem;
   margin-right: 3rem;
+  margin-bottom: 2.5rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+  background-color: var(--light-blue-input);
+  border: 2px solid transparent;
+  border-radius: 5px;
+  color: var(--labels-name);
 }
 
 #date{

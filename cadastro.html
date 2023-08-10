@@ -28,21 +28,36 @@
         <!-- FORMULARIO -->
         <form action="" id="form_login">
           <p>E-mail:</p>
-          <input id="email" type="text" />
+          <input id="email" type="text" placeholder="Fm12@gmail.com"/>
           <p>Senha:</p>
-          <input id="pass" type="password" name="" id="" />
+          <input type="password" name="" id="senha" placeholder="********"/>
 
           <div class="textinline">
             <p>Sexo:</p>
             <p>Data de nascimento:</p>
           </div>
-            <input id="sexo" type="text">
-            <input id="date" type="text">
+          <select name="" id="sexo">
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+          </select>
+            <input id="date" type="date">
           
-          <button>Cadastre-se</button>
+          <button id="btn">Cadastre-se</button>
         </form>
       </div>
     </main>
     <img id="bottom_cds" src="./img/fundo.svg" alt="">
+
+        <!-- popup para erros -->
+        <div id="popup" class="popup">
+          <div class="popup-conteudo">
+            <img id="img" src="./img/x.png" alt="" />
+            <p id="txtDoPopUp"></p>
+            <button id="btnFecharPopup">Fechar</button>
+          </div>
+        </div>
+    
+        <script src="./main.js"></script>
   </body>
 </html>
