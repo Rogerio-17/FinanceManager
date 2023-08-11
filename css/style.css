@@ -12,6 +12,7 @@
   --white-blue: #e6f5ff;
   --light-blue-input: #04b2d94b;
   --light-blue: #04b2d9;
+  --ligt-blue-opacity: rgba(4, 178, 217, 0.49);
   --white: #ffffff;
   --grey-subtitle: #a1acb3;
   --titleandtext: #333333;
@@ -25,6 +26,10 @@ body {
   background: url(../assets/background_lading.png) no-repeat right bottom;
   font-family: "Poppins", sans-serif, "Poppins", sans-serif;
   height: 100vh;
+}
+
+body#main{
+  background: none;
 }
 
 input, select, button:focus {
@@ -177,6 +182,78 @@ div.input-login-camp5{
   margin: auto;
   margin-top: 2rem;
 }
+
+/* FORMAÇÃO TELA DE DADOS */
+#database-page{
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.3fr;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+
+}
+#money-flow{
+  border: 1px solid red;
+  background-color: blue;
+}
+
+#balance{
+  border: 1px solid red;
+  background-color: green;
+}
+
+#transaction{
+  border: 1px solid red;
+  background-color: purple;
+}
+
+#valor-pessoa{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 40vh;
+  border: 1px solid red;
+  background-color: yellow;
+
+}
+
+div#title-pessoa{
+  display: flex;
+  justify-content: space-between ;
+  align-items: baseline;
+
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+div#title-pessoa button{
+  width: 100px;
+}
+div.card-pessoa{
+  display: inline-grid;
+  background-color: var(--ligt-blue-opacity);
+  border-radius: 5px;
+  height: 70px;
+  grid-template-columns: auto 1fr;
+  padding: 1rem;
+  align-items: center;
+          
+}
+div.card-pessoa h4{
+  font-size: 1.6rem;
+
+}
+div.card-pessoa p{
+  font-size: 1.2rem;
+
+}
+
+div.card-pessoa span{
+  grid-row: span  2;
+  text-align: right;
+  font-size: 1.5rem;
+} 
 
 /* MEDIA QUERY DE ALTURA NAS PAGINAS INICIAIS */
 @media(max-height:720px) {
