@@ -180,25 +180,30 @@ div.input-login-camp5{
 
 /* MEDIA QUERY DE ALTURA NAS PAGINAS INICIAIS */
 @media(max-height:720px) {
-  #index{
+  #index, #login {
     overflow-y: hidden;
   }
   
-  body#cadastro{
+  body#cadastro, body#login {
     background: none;
   }
+  
   h1{
     font-size: 4rem;
   }
+  
   h3{
     font-size: 1.6rem;
   }
+
   body#cadastro .content,
-  body#login .con{
+  body#login .content{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
+    margin: 0px auto;
 
   } 
 
 }
+
