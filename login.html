@@ -40,10 +40,15 @@
         <p>E-mail:</p>
         <input type="email" name="Email" id="email" placeholder="Fm12@gmail.com" class="light-blue-input" />
         <p>Senha:</p>
-        <input type="password" name="Pass" id="senha" placeholder="********" class="light-blue-input"/>
+        <input type="password" name="Pass" id="senha" placeholder="******" class="light-blue-input"/>
+        <p id="erro"></p>
         <button id="btn" class="btn-light-blue">Logar</button>
       </form>
     </div>
+
+
+
+
   </main>
 
   <!-- popup para erros -->
@@ -55,7 +60,14 @@
     </div>
   </div>
 
+
+
   <script src="./js/main.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth-compat.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/inicializandofb.js"></script>
+  <script src="./js/loading.js"></script>
 </body>
 
 </html>

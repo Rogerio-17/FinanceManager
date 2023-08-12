@@ -36,6 +36,20 @@ input, select, button:focus {
   outline: none;
 }
 
+.loading{
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading img {
+  width: 14rem;
+}
+
 a {
   text-decoration: none;
   font-family: var(--popins);
@@ -135,6 +149,13 @@ div.input-login-camp5{
   grid-area: camp5;
 
 }
+
+#erro {
+  margin-top: -2.2rem;
+  margin-bottom: 2rem;
+  color: red;
+}
+
 .btn-light-blue {
   display: block;
   cursor: pointer;

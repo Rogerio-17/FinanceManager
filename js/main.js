@@ -1,8 +1,10 @@
 let email = document.querySelector("#email");
 let senha = document.querySelector("#senha");
+let erroDeLogin = document.querySelector("#erro")
 let botao = document.querySelector("#btn");
 
-let dataDeNascimento = document.querySelector("#date");
+// Quando o campo não existir vai passar o valor de false para a variavel
+let dataDeNascimento = document.querySelector("#date") || false;
 let txtDoPopUp = document.querySelector("#txtDoPopUp");
 
 let btnFecharPopup = document.querySelector("#btnFecharPopup");
@@ -19,6 +21,7 @@ function verificaCamposInput() {
     if (emailRegex.test(emails)) {
       email.style.color = "#049dd9";
       email.style.border = "2px solid #049dd9";
+      erroDeLogin.innerHTML = ""
       problemaEmail = "";
     } else {
       email.style.color = "red";
@@ -31,9 +34,10 @@ function verificaCamposInput() {
 
   //Valida se a senha tem quantidade minima de caracteres permitidas em tempo real
   senha.addEventListener("input", () => {
-    if (senha.value.length < 8) {
+    if (senha.value.length < 6) {
       senha.style.color = "red";
       senha.style.border = "2px solid red";
+      erroDeLogin.innerHTML = ""
 
       //Caso senha esteja incorreta, adionar o valor verdadeiro para verificar quando o cliente clicar em logar/cadastrar
       problemasSenha = true;
@@ -62,7 +66,7 @@ function verificaCamposInput() {
         const popup = document.getElementById("popup");
         popup.style.display = "flex";
         txtDoPopUp.textContent =
-          "A senha informada possui menos de 8 caracteres";
+          "A senha informada é menor que o permitido!";
 
         // Verifica se a data de nascimento foi informada
       } else if (dataDeNascimento.value == "") {
@@ -72,7 +76,8 @@ function verificaCamposInput() {
 
         //se estiver tudo OK vai seguir com a logica do banco que vai ser adicionada abaixo
       } else {
-        alert("Todos os campos preenchidos");
+        //Auntentica o usuario
+       auth(email, senha)
       }
     } else {
       //Se possuir campos vazios passa a mensagem para preencher todos os campos
