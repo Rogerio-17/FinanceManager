@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="shortcut icon" type="imagex/png" href="./img/logo.svg" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- CSS -->
-  <link rel="stylesheet" href="./css/style.css" />
-  <link rel="shortcut icon" type="imagex/png" href="./img/logo.svg" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antonio:wght@300;400&family=Poppins:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Antonio:wght@300;400&family=Poppins:wght@200;300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+    <!-- TÍTULO -->
+    <title>Finance Manege</title>
+  </head>
 
-  <!-- TÍTULO -->
-  <title>Finance Manege</title>
-</head>
+  <body id="main">
+    <!-- MAIN -->
+    <main>
+      <!-- HEADER -->
+      <header>
+        <a href="#">
+          <img id="logo" src="./assets/logo_mini.png" alt="" />
+        </a>
+        <a id="logout"
+          ><img src="./assets/login_svg_icon.svg" alt="" />Logout</a
+        >
+      </header>
 
-<body id="main">
-  <!-- MAIN -->
-  <main>
-    <!-- HEADER -->
-    <header>
-    <a href="#">
-      <img id="logo" src="./assets/logo_mini.png" alt="" />
-    </a>
-      <a id="logout"><img src="./assets/login_svg_icon.svg" alt="">Logout</a>
-    </header>
-    
-    <div id="database-page">
+      <div id="database-page">
         <!-- VALOR POR PESSOA  -->
-      <section id="valor-pessoa">
+        <section id="valor-pessoa">
           <div id="title-pessoa">
             <h4>Valor Por pessoa</h4>
             <button class="btn-light-blue">Cadastrar</button>
@@ -42,25 +44,24 @@
             <h4 class="name">Rogério</h4>
             <span>$429.90</span>
             <p>Salário: 1200,00</p>
-            
           </div>
-          
+
           <div class="card-pessoa">
             <h4 class="name">Kennedy</h4>
             <span>$429.90</span>
-            <p>Salário: 1200,00</p> 
+            <p>Salário: 1200,00</p>
           </div>
 
           <div class="card-pessoa">
             <h4 class="name">Dozada</h4>
             <span>$429.90</span>
-            <p>Salário: 1200,00</p> 
+            <p>Salário: 1200,00</p>
           </div>
 
           <div class="card-pessoa">
             <h4 class="name">Rufino</h4>
             <span>$429.90</span>
-            <p>Salário: 1200,00</p> 
+            <p>Salário: 1200,00</p>
           </div>
         </section>
 
@@ -69,84 +70,71 @@
         <section id="money-flow">
           <h4>AQUI VEM O GRAFICO</h4>
 
+          <!-- GRAFICO DE BARRAS NO MOMENTO -->
           <div class="grafico-gastos">
-
+            <div>
+              <canvas id="myChart"></canvas>
+            </div>
           </div>
 
           <div id="btns-funcions">
-
             <button class="btn-light-blue">APAGAR DEPENDENTE</button>
             <button class="btn-light-blue">EDITAR DEPENDENTE</button>
           </div>
         </section>
 
         <section id="balance">
-    
           <div class="card">
-    
             <h3>
               <span>Entradas</span>
-              <img src="./assets/icon_incomes.svg" alt="Imagem de Entradas">
+              <img src="./assets/icon_incomes.svg" alt="Imagem de Entradas" />
             </h3>
-    
+
             <p id="incomeDisplay">R$ 0,00</p>
-    
           </div>
-    
+
           <div class="card">
             <h3>
               <span>Saídas</span>
-              <img src="./assets/icon_expenses.svg" alt="Imagem de Entradas">
+              <img src="./assets/icon_expenses.svg" alt="Imagem de Entradas" />
             </h3>
-    
+
             <p id="expenseDisplay">R$ 0,00</p>
           </div>
-    
+
           <div class="card total">
-    
             <h3>
               <span>Total</span>
-              <img src="./assets/icon_balance.svg" alt="Imagem de Entradas">
+              <img src="./assets/icon_balance.svg" alt="Imagem de Entradas" />
             </h3>
-    
+
             <p id="totalDisplay">R$ 0,00</p>
           </div>
-    
         </section>
+      </div>
+      <section id="transaction">
+        <h2 class="sr-only">Transações</h2>
 
-       
+        <a href="#" class="button new" onclick="Modal.open()"
+          >+ Nova Transação</a
+        >
 
-    </div>
-    <section id="transaction">
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Categoria</th>
+              <th>Valor</th>
+              <th>Data</th>
+              <th></th>
+            </tr>
+            <!--LINHA-->
+          </thead>
 
-      <h2 class="sr-only">Transações</h2>
-
-      <a href="#" class="button new" onclick="Modal.open()">+ Nova Transação</a>
-
-      <table id="data-table">
-
-        <thead>
-          <tr>
-            <th>Descrição</th>
-            <th>Categoria</th>
-            <th>Valor</th>
-            <th>Data</th>
-            <th></th>
-          </tr>
-          <!--LINHA-->
-        </thead>
-
-        <tbody>
-
-        </tbody>
-
-      </table>
-
-    </section>
-  </main>
-
-
-
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
 
     <!-- popup para erros -->
     <div id="popup" class="popup">
@@ -157,15 +145,12 @@
       </div>
     </div>
 
-
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth-compat.js"></script>
     <script src="./js/inicializandofb.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/loading.js"></script>
     <script src="./js/auth.js"></script>
-    
-</body>
-
+  </body>
 </html>

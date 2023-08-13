@@ -222,7 +222,11 @@ div.input-login-camp5{
 }
 #money-flow{
   border: 1px solid red;
-  background-color: blue;
+  background-color: #fff;
+}
+
+.grafico-gastos{
+  width: 65vh;
 }
 
 #balance{
