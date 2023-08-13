@@ -1,41 +1,37 @@
-function auth(email, senha) {
+function register(email, senha) {
   // Exibe atela de carregamento
   showLoading();
   firebase
     .auth()
-    .signInWithEmailAndPassword(email.value, senha.value)
-    .then((response) => {
+    .createUserWithEmailAndPassword(email.value, senha.value)
+    .then(() => {
       //Fecha tela de carregamento
       hideLoading();
       //Direciona para Pagina principal
       window.location.href = "/FinanceManager/main.html";
+
+      //Aqui vai ser chamada a função
     })
     .catch((error) => {
-      //Fecha tela de carregamento
-      hideLoading();
-
+        hideLoading();
       //Usuario e senha incorretos
-      if (error.code == "auth/user-not-found") {
-        erroDeLogin.innerHTML = "Usúario não foi encontrado";
-        senha.style.color = "red";
-        senha.style.border = "2px solid red";
+      if (error.code == "auth/email-already-in-use") {
+        //Fecha tela de carregamento
+        erroDeLogin.innerHTML = "Email já esta cadastrado";
+        erroDeLogin.style.fontSize = "14px";
 
         email.style.color = "red";
         email.style.border = "2px solid red";
 
-        // Senha incorreta
-      } else if (error.code == "auth/wrong-password") {
-        erroDeLogin.innerHTML = "Senha incorreta";
-        senha.style.color = "red";
-        senha.style.border = "2px solid red";
-
-        // Erro de rede
+        //Erro desconhecido
       } else if (error.code == "auth/network-request-failed") {
         erroDeLogin.innerHTML = "Erro na conexão! Verifique sua rede.";
+        erroDeLogin.style.fontSize = "14px";
 
         // Caso dê erro desconhecido
       } else {
         erroDeLogin.innerHTML = "Erro desconheido " + error.message;
+        erroDeLogin.style.fontSize = "14px";
       }
     });
 }

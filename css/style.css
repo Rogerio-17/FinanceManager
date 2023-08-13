@@ -2,7 +2,10 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  
 }
+
+
 
 :root {
   --dark-Blue: #031ca6;
@@ -205,6 +208,11 @@ div.input-login-camp5{
 }
 
 /* FORMAÇÃO TELA DE DADOS */
+
+#logout {
+  cursor: pointer;
+}
+
 #database-page{
   display: grid;
   grid-template-columns: 1fr 1.5fr 1.3fr;

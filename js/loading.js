@@ -10,3 +10,11 @@ function showLoading() {
   div.appendChild(img);
 
 }
+
+function hideLoading(){
+  const hideLoading = document.getElementsByClassName("loading")
+  if(hideLoading.length){
+    hideLoading[0].remove()
+  }
+  
+}

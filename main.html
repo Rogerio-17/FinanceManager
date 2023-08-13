@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- CSS -->
   <link rel="stylesheet" href="./css/style.css" />
-  <link rel="shortcut icon" type="imagex/png" href="./img/Logo.svg" />
+  <link rel="shortcut icon" type="imagex/png" href="./img/logo.svg" />
 
   <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,7 +27,7 @@
     <a href="#">
       <img id="logo" src="./assets/logo_mini.png" alt="" />
     </a>
-      <a href="login.html"><img src="./assets/login_svg_icon.svg" alt="">Login</a>
+      <a id="logout"><img src="./assets/login_svg_icon.svg" alt="">Logout</a>
     </header>
     
     <div id="database-page">
@@ -144,7 +144,28 @@
 
     </section>
   </main>
-  <script src="./js/main.js"></script>
+
+
+
+
+    <!-- popup para erros -->
+    <div id="popup" class="popup">
+      <div class="popup-conteudo">
+        <img id="img" src="assets/x.png" alt="" />
+        <p id="txtDoPopUp"></p>
+        <button id="btnFecharPopup" class="btn-light-blue">Fechar</button>
+      </div>
+    </div>
+
+
+    
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth-compat.js"></script>
+    <script src="./js/inicializandofb.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/loading.js"></script>
+    <script src="./js/auth.js"></script>
+    
 </body>
 
 </html>
