@@ -31,8 +31,29 @@ function bloquearAcesso() {
 // Criação do grafico
 function grafico() {
   const ctx = document.getElementById("myChart");
-  let valoresEntrantes = [120, 1900, 20, 0, 0, 0];
+  let valoresEntrantes = [120, 1900, 20, 0, 0, 1000];
   let valoresSaintes = [200, 300, 700, 600, 200, 106];
+  let resultadosSubtracao = "";
+  let colorSaldo = "";
+
+  // Calcula o saldo
+  function caculaMediaSaldo() {
+    // Criar um novo array para guardar os resultados da subtração
+    resultadosSubtracao = valoresEntrantes.map((vs, i) => {
+      let valorSainte = valoresSaintes[i]; // Obter o valor correspondente em valoresSaintes
+      return vs - valorSainte; // Subtrair os valores e retornar o resultado
+    });
+
+    let saldo = resultadosSubtracao.reduce((ac, number) => ac + number);
+    if (saldo < 0) {
+      colorSaldo = "#f21505";
+    } else {
+      colorSaldo = "#0a02f0";
+    }
+  }
+
+  caculaMediaSaldo();
+
   new Chart(ctx, {
     type: "line",
     data: {
@@ -42,7 +63,7 @@ function grafico() {
           label: "#Entradas",
           data: valoresEntrantes,
           borderWidth: 2,
-          borderColor: "#0a02f0",
+          borderColor: "#05f0dc",
           tension: 0.4,
           pointRadius: 0,
         },
@@ -50,7 +71,15 @@ function grafico() {
           label: "#Saídas",
           data: valoresSaintes,
           borderWidth: 2,
-          borderColor: "#ff0303",
+          borderColor: "#45d606",
+          tension: 0.4,
+          pointRadius: 0,
+        },
+        {
+          label: "#Saldo",
+          data: resultadosSubtracao,
+          borderWidth: 2,
+          borderColor: colorSaldo,
           tension: 0.4,
           pointRadius: 0,
         },
@@ -67,5 +96,6 @@ function grafico() {
 }
 
 grafico();
+
 bloquearAcesso();
 deslogar();
