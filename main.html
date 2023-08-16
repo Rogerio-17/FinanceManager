@@ -83,33 +83,21 @@
         <section id="balance">
     
           <div class="card">
-    
-            <h3>
-              <span>Entradas</span>
-              <img src="./assets/icon_incomes.svg" alt="Imagem de Entradas">
-            </h3>
-    
-            <p id="incomeDisplay">R$ 0,00</p>
-    
+            <h3>Entradas</h3>
+            <p>R$ 0,00</p>
+            <img src="./assets/icon_incomes.svg" alt="Imagem de Entradas">
           </div>
     
           <div class="card">
-            <h3>
-              <span>Saídas</span>
-              <img src="./assets/icon_expenses.svg" alt="Imagem de Entradas">
-            </h3>
-    
-            <p id="expenseDisplay">R$ 0,00</p>
+            <h3>Saídas</h3>
+            <p>R$ 0,00</p>
+            <img src="./assets/icon_expenses.svg" alt="Imagem de Entradas">
           </div>
     
           <div class="card total">
-    
-            <h3>
-              <span>Total</span>
-              <img src="./assets/icon_balance.svg" alt="Imagem de Entradas">
-            </h3>
-    
-            <p id="totalDisplay">R$ 0,00</p>
+            <h3>Total</h3>
+            <p>R$ 0,00</p>
+            <img src="./assets/icon_balance.svg" alt="Imagem de Entradas">
           </div>
     
         </section>
@@ -118,12 +106,11 @@
 
     </div>
     <section id="transaction">
-
-      <h2 class="sr-only">Transações</h2>
-
-      <a href="#" class="button new" onclick="Modal.open()">+ Nova Transação</a>
-
-      <table id="data-table">
+      <div class="header">
+        <h2 class="sr-only">Transações</h2>
+        <a href="#" class="button new" onclick="Modal.open()">Cadastrar Despesa/Entrada</a>
+      </div>
+      <!--<table id="data-table">
 
         <thead>
           <tr>
@@ -133,13 +120,42 @@
             <th>Data</th>
             <th></th>
           </tr>
-          <!--LINHA-->
         </thead>
 
         <tbody>
 
         </tbody>
 
+      </table>-->
+
+      <table>
+        <tr>
+          <th>Descrição</th>
+          <th>Categoria/th>
+          <th>Valor</th>
+          <th>Data</th>
+        </tr>
+       
+        <tr>
+          <td>Desenvolvimento de site</td>
+          <td>Trabalho</td>
+          <td>R$ 12.000,00</td>
+          <td>13/04/2020</td>
+        </tr>
+       
+        <tr>
+         <td>Hamburguer</td>
+          <td>Comida</td>
+          <td>R$ -59,00</td>
+          <td>10/04/2020</td>
+        </tr>
+        
+         <tr>
+         <td>Aluguel do apartamento</td>
+          <td>casa</td>
+          <td>- R$ 1.200,00</td>
+          <td>27/03/2020</td>
+        </tr>
       </table>
 
     </section>
