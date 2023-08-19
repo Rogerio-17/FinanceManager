@@ -26,6 +26,7 @@ function auth(email, senha) {
         // Senha incorreta
       } else if (error.code == "auth/wrong-password") {
         erroDeLogin.innerHTML = "Senha incorreta";
+        recuperaSenha.innerHTML = "Recuperar senha"
         senha.style.color = "red";
         senha.style.border = "2px solid red";
 

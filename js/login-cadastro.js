@@ -1,7 +1,10 @@
 let email = document.querySelector("#email");
 let senha = document.querySelector("#senha");
 let erroDeLogin = document.querySelector("#erro");
+let recuperaSenha = document.querySelector("#recuperar_senha");
 let botao = document.querySelector("#btn");
+let popup = document.querySelector("#popup");
+let imgPop = document.querySelector("#img")
 
 // Quando o campo não existir vai passar o valor de false para a variavel
 let dataDeNascimento = document.querySelector("#date") || false;
@@ -10,7 +13,6 @@ let txtDoPopUp = document.querySelector("#txtDoPopUp");
 let btnFecharPopup = document.querySelector("#btnFecharPopup");
 let problemaEmail = "";
 let problemasSenha = "";
-
 
 // Verifica se os campos de inputs estão vazios
 function verificaCamposInput() {
@@ -58,25 +60,21 @@ function verificaCamposInput() {
     if (email.value != "" && senha.value != "") {
       //Verifica se o email informado foi validado
       if (problemaEmail == true) {
-        const popup = document.getElementById("popup");
         popup.style.display = "flex";
         txtDoPopUp.textContent = "O email informado não é válido";
 
         //Verifica se a senha informada foi validada
       } else if (problemasSenha == true) {
-        const popup = document.getElementById("popup");
         popup.style.display = "flex";
         txtDoPopUp.textContent = "A senha informada é menor que o permitido!";
 
         // Verifica se a data de nascimento foi informada
       } else if (dataDeNascimento.value == "") {
-        const popup = document.getElementById("popup");
         popup.style.display = "flex";
         txtDoPopUp.textContent = "Por favor! Informe a sua data de nascimento";
 
         //se estiver tudo OK vai seguir com a logica do banco que vai ser adicionada abaixo
       } else {
-        
         if (botao.value == "logar") {
           //Auntentica o usuario
           auth(email, senha);
@@ -87,13 +85,33 @@ function verificaCamposInput() {
       }
     } else {
       //Se possuir campos vazios passa a mensagem para preencher todos os campos
-      const popup = document.getElementById("popup");
       popup.style.display = "flex";
       txtDoPopUp.textContent = "Preencha todos os campos!";
     }
   });
 }
 
+// Recuperar senha do usuario
+function recuperarSenha() {
+  recuperaSenha.addEventListener("click", () =>{
+    showLoading();
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email.value)
+      .then(() => {
+        hideLoading();
+        popup.style.display = "flex";
+        imgPop.src = "assets/check.png"
+        txtDoPopUp.textContent = "Email para recuperação de senha enviado com sucesso!";
+      }).catch((err) => {
+        hideLoading();
+        alert("erroo")
+      })
+  })
+
+}
+
+recuperarSenha()
 // Fecha o popup
 function fecharPoup() {
   btnFecharPopup.addEventListener("click", () => {
@@ -105,19 +123,13 @@ function fecharPoup() {
 
 //Matem o usuario logado, quando ele tentar acessar login sem deslogar antes
 function manterUsuarioLogado() {
-  firebase.auth().onAuthStateChanged(user => {
-      if(user){
-          window.location.href = "/FinanceManager/main.html"
-      } 
-  })
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      window.location.href = "/FinanceManager/main.html";
+    }
+  });
 }
- manterUsuarioLogado()
-
-
-
-
-
-
+manterUsuarioLogado();
 
 fecharPoup();
 verificaCamposInput();

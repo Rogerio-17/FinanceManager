@@ -153,10 +153,28 @@ div.input-login-camp5{
 
 }
 
-#erro {
+.content_err{
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
   margin-top: -2.2rem;
   margin-bottom: 2rem;
+}
+
+#erro {
   color: red;
+}
+
+#recuperar_senha{
+  font-weight: 500;
+  color: var(--dark-Blue);
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+#recuperar_senha:hover{
+  color: var(--grey-blue-light);
 }
 
 .btn-light-blue {
