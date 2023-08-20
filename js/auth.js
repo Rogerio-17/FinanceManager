@@ -19,7 +19,7 @@ function auth(email, senha) {
         erroDeLogin.innerHTML = "Usúario não foi encontrado";
         senha.style.color = "red";
         senha.style.border = "2px solid red";
-
+        recuperaSenha.innerHTML = ""
         email.style.color = "red";
         email.style.border = "2px solid red";
 
@@ -33,10 +33,19 @@ function auth(email, senha) {
         // Erro de rede
       } else if (error.code == "auth/network-request-failed") {
         erroDeLogin.innerHTML = "Erro na conexão! Verifique sua rede.";
+        recuperaSenha.innerHTML = ""
+
+        // Usuario tentou logar varias vezes com senha incorreta
+      } else if (error.code == "auth/too-many-requests") {
+        erroDeLogin.innerHTML = "Conta temporariamente bloqueada, devido a quantidade de tentativas de login incorreta. Para acessar agora redefina sua senha!";
+        recuperaSenha.innerHTML = ""
+        recuperaSenha.innerHTML = "Recuperar senha"
 
         // Caso dê erro desconhecido
-      } else {
+      }
+       else {
         erroDeLogin.innerHTML = "Erro desconheido " + error.message;
+        recuperaSenha.innerHTML = ""
       }
     });
 }
