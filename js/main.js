@@ -1,4 +1,7 @@
 let logout = document.querySelector("#logout");
+let bntDeCadastroDeValor = document.querySelector("#cadastroValor")
+let popupDeCadastroDeValor = document.querySelector("#popupDeCadastroValor")
+let cadastrarValor = document.querySelector("#cadastraValor")
 // Desloga o usuario
 function deslogar() {
   logout.addEventListener("click", () => {
@@ -54,6 +57,7 @@ function grafico() {
 
   caculaMediaSaldo();
 
+  // Gera grafico
   new Chart(ctx, {
     type: "line",
     data: {
@@ -94,6 +98,35 @@ function grafico() {
     },
   });
 }
+
+// Vai cadastra a entrada ou a saida do valor por pessoa
+function cadastroDeEntradaOuSaida(){
+  //Abre o Popup para cadastro de valor
+  bntDeCadastroDeValor.addEventListener("click", () => {
+    popupDeCadastroDeValor.style.display = "flex"
+  })
+
+
+
+
+
+  // Cadastra e fecha a Popup para cadastro de valor
+  cadastrarValor.addEventListener("click", () => {
+    popupDeCadastroDeValor.style.display = "none"
+  })
+}
+cadastroDeEntradaOuSaida()
+
+
+
+
+
+
+
+
+
+
+
 
 grafico();
 
