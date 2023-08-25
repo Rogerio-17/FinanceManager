@@ -1,96 +1,101 @@
-let email = document.querySelector("#email");
-let senha = document.querySelector("#senha");
-let botao = document.querySelector("#btn");
-
-let dataDeNascimento = document.querySelector("#date");
-let txtDoPopUp = document.querySelector("#txtDoPopUp");
-
-let btnFecharPopup = document.querySelector("#btnFecharPopup");
-let problemaEmail = "";
-let problemasSenha = "";
-
-// Verifica se os campos de inputs estão vazios
-function verificaCamposInput() {
-  //Valida email em tempo real
-  email.addEventListener("input", () => {
-    const emails = email.value;
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-    if (emailRegex.test(emails)) {
-      email.style.color = "#049dd9";
-      email.style.border = "2px solid #049dd9";
-      problemaEmail = "";
-    } else {
-      email.style.color = "red";
-      email.style.border = "2px solid red";
-
-      // //Caso o email esteja incorreto, adionar o valor verdadeiro para verificar quando o cliente clicar em logar/cadastrar
-      problemaEmail = true;
-    }
+let logout = document.querySelector("#logout");
+// Desloga o usuario
+function deslogar() {
+  logout.addEventListener("click", () => {
+    console.log("clicou");
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        window.location.href = "/FinanceManager/login.html";
+      })
+      .catch(() => {
+        const popup = document.getElementById("popup");
+        popup.style.display = "flex";
+        txtDoPopUp.textContent = "Erro ao tentar deslogar";
+      });
   });
+}
 
-  //Valida se a senha tem quantidade minima de caracteres permitidas em tempo real
-  senha.addEventListener("input", () => {
-    if (senha.value.length < 8) {
-      senha.style.color = "red";
-      senha.style.border = "2px solid red";
-
-      //Caso senha esteja incorreta, adionar o valor verdadeiro para verificar quando o cliente clicar em logar/cadastrar
-      problemasSenha = true;
-    } else {
-      senha.style.color = "#049dd9";
-      senha.style.border = "2px solid #049dd9";
-      problemasSenha = "";
-    }
-  });
-
-  // Quando é clicado no botão de login/cadastro verifica os campos
-  botao.addEventListener("click", () => {
-    //Para não da o refresh na aba
-    event.preventDefault();
-
-    //Verifica se possui inputs vazios
-    if (email.value != "" && senha.value != "") {
-      //Verifica se o email informado foi validado
-      if (problemaEmail == true) {
-        const popup = document.getElementById("popup");
-        popup.style.display = "flex";
-        txtDoPopUp.textContent = "O email informado não é válido";
-
-        //Verifica se a senha informada foi validada
-      } else if (problemasSenha == true) {
-        const popup = document.getElementById("popup");
-        popup.style.display = "flex";
-        txtDoPopUp.textContent =
-          "A senha informada possui menos de 8 caracteres";
-
-        // Verifica se a data de nascimento foi informada
-      } else if (dataDeNascimento.value == "") {
-        const popup = document.getElementById("popup");
-        popup.style.display = "flex";
-        txtDoPopUp.textContent = "Por favor! Informe a sua data de nascimento";
-
-        //se estiver tudo OK vai seguir com a logica do banco que vai ser adicionada abaixo
-      } else {
-        alert("Todos os campos preenchidos");
-      }
-    } else {
-      //Se possuir campos vazios passa a mensagem para preencher todos os campos
-      const popup = document.getElementById("popup");
-      popup.style.display = "flex";
-      txtDoPopUp.textContent = "Preencha todos os campos!";
+// Bloqueia o acesso de usuarios que tentem acessar a main estando sem autenticação no firebase
+function bloquearAcesso() {
+  //Vai ficar buscando de tempos em tempos o status da validação do usuario
+  firebase.auth().onAuthStateChanged((user) => {
+    console.log(user);
+    if (!user) {
+      window.location.href = "/FinanceManager/login.html";
     }
   });
 }
 
-// Fecha o popup
-function fecharPoup() {
-  btnFecharPopup.addEventListener("click", () => {
-    event.preventDefault();
-    const popup = document.getElementById("popup");
-    popup.style.display = "none";
+// Criação do grafico
+function grafico() {
+  const ctx = document.getElementById("myChart");
+  let valoresEntrantes = [120, 1900, 20, 0, 0, 1000];
+  let valoresSaintes = [200, 300, 700, 600, 200, 106];
+  let resultadosSubtracao = "";
+  let colorSaldo = "";
+
+  // Calcula o saldo
+  function caculaMediaSaldo() {
+    // Criar um novo array para guardar os resultados da subtração
+    resultadosSubtracao = valoresEntrantes.map((vs, i) => {
+      let valorSainte = valoresSaintes[i]; // Obter o valor correspondente em valoresSaintes
+      return vs - valorSainte; // Subtrair os valores e retornar o resultado
+    });
+
+    let saldo = resultadosSubtracao.reduce((ac, number) => ac + number);
+    if (saldo < 0) {
+      colorSaldo = "#f21505";
+    } else {
+      colorSaldo = "#0a02f0";
+    }
+  }
+
+  caculaMediaSaldo();
+
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["Dia 5", "Dia 10", "Dia 15", "Dia 20", "Dia 25", "Dia 30"],
+      datasets: [
+        {
+          label: "#Entradas",
+          data: valoresEntrantes,
+          borderWidth: 2,
+          borderColor: "#05f0dc",
+          tension: 0.4,
+          pointRadius: 0,
+        },
+        {
+          label: "#Saídas",
+          data: valoresSaintes,
+          borderWidth: 2,
+          borderColor: "#45d606",
+          tension: 0.4,
+          pointRadius: 0,
+        },
+        {
+          label: "#Saldo",
+          data: resultadosSubtracao,
+          borderWidth: 2,
+          borderColor: colorSaldo,
+          tension: 0.4,
+          pointRadius: 0,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        x: {
+          beginAtZero: true,
+        },
+      },
+    },
   });
 }
 
-fecharPoup();
-verificaCamposInput();
+grafico();
+
+bloquearAcesso();
+deslogar();
