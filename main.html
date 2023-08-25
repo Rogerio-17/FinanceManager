@@ -85,106 +85,66 @@
 
         <section id="balance">
           <div class="card">
+    
             <h3>
               <span>Entradas</span>
-              <img src="./assets/icon_incomes.svg" alt="Imagem de Entradas" />
+              <img src="./assets/icon_incomes.svg" alt="Imagem de Entradas">
             </h3>
-
+    
             <p id="incomeDisplay">R$ 0,00</p>
+    
           </div>
 
           <div class="card">
             <h3>
               <span>Saídas</span>
-              <img src="./assets/icon_expenses.svg" alt="Imagem de Entradas" />
+              <img src="./assets/icon_expenses.svg" alt="Imagem de Entradas">
             </h3>
-
+    
             <p id="expenseDisplay">R$ 0,00</p>
           </div>
 
           <div class="card total">
+    
             <h3>
               <span>Total</span>
-              <img src="./assets/icon_balance.svg" alt="Imagem de Entradas" />
+              <img src="./assets/icon_balance.svg" alt="Imagem de Entradas">
             </h3>
-
+    
             <p id="totalDisplay">R$ 0,00</p>
           </div>
         </section>
-      </div>
-      <section id="transaction">
-        <h2 class="sr-only">Transações</h2>
 
-        <a href="#" class="button new" onclick="Modal.open()"
-          >+ Nova Transação</a
-        >
-
-        <table id="data-table">
-          <thead>
-            <tr>
-              <th>Descrição</th>
-              <th>Categoria</th>
-              <th>Valor</th>
-              <th>Data</th>
-              <th></th>
-            </tr>
-            <!--LINHA-->
-          </thead>
-
-          <tbody></tbody>
-        </table>
-      </section>
-    </main>
-
-    <!-- Cdastro de despesa/entradas -->
-    <div class="popup2" id="popupDeCadastroValor">
-    <div class="popup_cadastro">
-      <h2>Cadastro de despesa/Entrada</h2>
-      <form action="" class="form_DE">
-        <div class="inf1">
-          <p>Titúlo:</p>
-          <input type="text" id="" />
-        </div>
-        <div class="inf2">
-          <p>Tipo:</p>
-          <select name="" id="">
-            <option value="">Selecione o tipo</option>
-            <option value="">Entrada</option>
-            <option value="">Saida</option>
-          </select>
-        </div>
-        <div class="inf3">
-          <p>Valor:</p>
-          <input type="text" id="" />
-        </div>
-        <div class="inf4">
-          <p>Categoria:</p>
-          <input type="text" id="" />
-        </div>
-
-        <div class="inf5" >
-          <button class="btn-light-blue" id="cadastraValor">Cadastrar</button>
-        </div>
-      </form>
+       
     </div>
-  </div>
+    <section id="transaction">
 
+      <h2 class="sr-only">Transações</h2>
 
-    <!-- popup para erros -->
-    <div id="popup" class="popup">
-      <div class="popup-conteudo">
-        <img id="img" src="assets/x.png" alt="" />
-        <p id="txtDoPopUp"></p>
-        <button id="btnFecharPopup" class="btn-light-blue">Fechar</button>
-      </div>
-    </div>
+      <a href="#" class="button new" onclick="Modal.open()">+ Nova Transação</a>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth-compat.js"></script>
-    <script src="./js/inicializandofb.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/loading.js"></script>
-    <script src="./js/auth.js"></script>
-  </body>
+      <table id="data-table">
+
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Categoria</th>
+            <th>Valor</th>
+            <th>Data</th>
+            <th></th>
+          </tr>
+          <!--LINHA-->
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+      </table>
+
+    </section>
+  </main>
+  <script src="./js/main.js"></script>
+</body>
+
 </html>
